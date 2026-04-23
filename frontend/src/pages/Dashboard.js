@@ -19,14 +19,20 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!token) navigate("/login");
-    getItems();
+    if (!token) {
+      navigate("/login");
+    } else {
+      getItems();
+    }
   }, []);
 
   const getItems = async () => {
-    const res = await axios.get("http://localhost:5000/api/items", {
-      headers: { Authorization: token }
-    });
+    const res = await axios.get(
+      "https://expense-backend-woro.onrender.com/api/items",
+      {
+        headers: { Authorization: token }
+      }
+    );
 
     setItems(res.data);
   };
@@ -42,7 +48,7 @@ function Dashboard() {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:5000/api/items",
+      "https://expense-backend-woro.onrender.com/api/items",
       form,
       {
         headers: { Authorization: token }
@@ -54,7 +60,7 @@ function Dashboard() {
 
   const deleteItem = async (id) => {
     await axios.delete(
-      `http://localhost:5000/api/items/${id}`,
+      `https://expense-backend-woro.onrender.com/api/items/${id}`,
       {
         headers: { Authorization: token }
       }
@@ -73,14 +79,51 @@ function Dashboard() {
       <h2>Dashboard</h2>
 
       <form onSubmit={submitHandler}>
-        <input className="form-control mb-2" name="itemName" placeholder="Item Name" onChange={changeHandler} />
-        <input className="form-control mb-2" name="description" placeholder="Description" onChange={changeHandler} />
-        <input className="form-control mb-2" name="type" placeholder="Lost / Found" onChange={changeHandler} />
-        <input className="form-control mb-2" name="location" placeholder="Location" onChange={changeHandler} />
-        <input className="form-control mb-2" name="date" type="date" onChange={changeHandler} />
-        <input className="form-control mb-2" name="contactInfo" placeholder="Contact Info" onChange={changeHandler} />
+        <input
+          className="form-control mb-2"
+          name="itemName"
+          placeholder="Item Name"
+          onChange={changeHandler}
+        />
 
-        <button className="btn btn-primary w-100">Add Item</button>
+        <input
+          className="form-control mb-2"
+          name="description"
+          placeholder="Description"
+          onChange={changeHandler}
+        />
+
+        <input
+          className="form-control mb-2"
+          name="type"
+          placeholder="Lost / Found"
+          onChange={changeHandler}
+        />
+
+        <input
+          className="form-control mb-2"
+          name="location"
+          placeholder="Location"
+          onChange={changeHandler}
+        />
+
+        <input
+          className="form-control mb-2"
+          name="date"
+          type="date"
+          onChange={changeHandler}
+        />
+
+        <input
+          className="form-control mb-2"
+          name="contactInfo"
+          placeholder="Contact Info"
+          onChange={changeHandler}
+        />
+
+        <button className="btn btn-primary w-100">
+          Add Item
+        </button>
       </form>
 
       <hr />
@@ -104,7 +147,10 @@ function Dashboard() {
         </div>
       ))}
 
-      <button className="btn btn-dark w-100 mt-3" onClick={logout}>
+      <button
+        className="btn btn-dark w-100 mt-3"
+        onClick={logout}
+      >
         Logout
       </button>
     </div>

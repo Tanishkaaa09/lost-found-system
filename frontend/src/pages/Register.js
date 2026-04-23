@@ -22,9 +22,14 @@ function Register() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/register", form);
+      await axios.post(
+        "https://expense-backend-woro.onrender.com/api/register",
+        form
+      );
+
       alert("Registration Successful");
       navigate("/login");
+
     } catch (error) {
       alert("Error");
     }
@@ -35,11 +40,33 @@ function Register() {
       <h2>Register</h2>
 
       <form onSubmit={submitHandler}>
-        <input className="form-control mb-2" type="text" name="name" placeholder="Name" onChange={changeHandler} />
-        <input className="form-control mb-2" type="email" name="email" placeholder="Email" onChange={changeHandler} />
-        <input className="form-control mb-2" type="password" name="password" placeholder="Password" onChange={changeHandler} />
+        <input
+          className="form-control mb-2"
+          type="text"
+          name="name"
+          placeholder="Name"
+          onChange={changeHandler}
+        />
 
-        <button className="btn btn-primary w-100">Register</button>
+        <input
+          className="form-control mb-2"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={changeHandler}
+        />
+
+        <input
+          className="form-control mb-2"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={changeHandler}
+        />
+
+        <button className="btn btn-primary w-100">
+          Register
+        </button>
       </form>
 
       <p className="mt-3">

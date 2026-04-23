@@ -21,7 +21,10 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", form);
+      const res = await axios.post(
+        "https://expense-backend-woro.onrender.com/api/login",
+        form
+      );
 
       localStorage.setItem("token", res.data.token);
 
@@ -37,10 +40,25 @@ function Login() {
       <h2>Login</h2>
 
       <form onSubmit={submitHandler}>
-        <input className="form-control mb-2" type="email" name="email" placeholder="Email" onChange={changeHandler} />
-        <input className="form-control mb-2" type="password" name="password" placeholder="Password" onChange={changeHandler} />
+        <input
+          className="form-control mb-2"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={changeHandler}
+        />
 
-        <button className="btn btn-success w-100">Login</button>
+        <input
+          className="form-control mb-2"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={changeHandler}
+        />
+
+        <button className="btn btn-success w-100">
+          Login
+        </button>
       </form>
 
       <p className="mt-3">
