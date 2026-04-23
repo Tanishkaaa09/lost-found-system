@@ -1,0 +1,18 @@
+body{
+  background:#f2f2f2;
+}
+
+.box{
+  width:420px;
+  margin:50px auto;
+  background:white;
+  padding:25px;
+  border-radius:10px;
+}
+
+.item-box{
+  background:#f8f9fa;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+}
